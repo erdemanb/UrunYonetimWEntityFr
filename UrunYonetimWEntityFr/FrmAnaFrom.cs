@@ -22,5 +22,11 @@ namespace UrunYonetimWEntityFr
             Form1 fr = new Form1();
             fr.ShowDialog();
         }
+
+        private void btnUrunIslemleri_Click(object sender, EventArgs e)
+        {
+            FrmUrun frmUrun = new FrmUrun();
+            frmUrun.ShowDialog();
+        }
     }
 }
