@@ -187,6 +187,7 @@
             this.btnUrunSil.TabIndex = 15;
             this.btnUrunSil.Text = "SİL";
             this.btnUrunSil.UseVisualStyleBackColor = true;
+            this.btnUrunSil.Click += new System.EventHandler(this.btnUrunSil_Click);
             // 
             // btnUrunGuncelle
             // 
@@ -197,6 +198,7 @@
             this.btnUrunGuncelle.TabIndex = 16;
             this.btnUrunGuncelle.Text = "GÜNCELLE";
             this.btnUrunGuncelle.UseVisualStyleBackColor = true;
+            this.btnUrunGuncelle.Click += new System.EventHandler(this.btnUrunGuncelle_Click);
             // 
             // dataGridView1
             // 

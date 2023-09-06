@@ -19,7 +19,21 @@ namespace UrunYonetimWEntityFr
         DBUrunYonetimEntities db = new DBUrunYonetimEntities();
         private void FrmUrun_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = db.TBL_URUN.ToList();
+            dataGridView1.DataSource = (from x in db.TBL_URUN
+                                        select new
+                                        {
+                                            x.URUNID,
+                                            x.URUNAD,
+                                            x.URUNMARKA,
+                                            x.URUNSTOK,
+                                            x.URUNFIYAT,
+                                            x.TBL_KATEGORI.KATEGORIAD,
+                                            x.URUNSTOKDURUM
+                                        }).ToList();
+            var kategoriler = (from x in db.TBL_KATEGORI select new { x.KATEGORIID, x.KATEGORIAD }).ToList();
+            cmbUrunKategori.ValueMember = "KATEGORIID";
+            cmbUrunKategori.DisplayMember = "KATEGORIAD";
+            cmbUrunKategori.DataSource = kategoriler;
         }
 
         private void btnUrunEkle_Click(object sender, EventArgs e)
@@ -35,6 +49,30 @@ namespace UrunYonetimWEntityFr
             db.SaveChanges();
             MessageBox.Show("Ürün sisteme kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             dataGridView1.DataSource = db.TBL_URUN.ToList();
+
+        }
+
+        private void btnUrunSil_Click(object sender, EventArgs e)
+        {
+            int x = Convert.ToInt32(txtUrunID.Text);
+            var urun = db.TBL_URUN.Find(x);
+            db.TBL_URUN.Remove(urun);
+            db.SaveChanges();
+            MessageBox.Show("Ürün silindi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            dataGridView1.DataSource = db.TBL_URUN.ToList();
+        }
+
+        private void btnUrunGuncelle_Click(object sender, EventArgs e)
+        {
+            int x = Convert.ToInt32(txtUrunID.Text);
+            var urun = db.TBL_URUN.Find(x);
+            urun.URUNAD = txtUrunAd.Text;
+            urun.URUNSTOK = short.Parse(txtStokSayısı.Text);
+            urun.URUNMARKA = txtUrunMarka.Text;
+            db.SaveChanges();
+            MessageBox.Show("Ürün güncellendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            dataGridView1.DataSource = db.TBL_URUN.ToList();
+
 
         }
     }
