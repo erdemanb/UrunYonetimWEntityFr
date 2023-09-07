@@ -19,14 +19,20 @@ namespace UrunYonetimWEntityFr
 
         private void btnKategoriIslemleri_Click(object sender, EventArgs e)
         {
-            Form1 fr = new Form1();
-            fr.ShowDialog();
+            FrmKategoriler fr = new FrmKategoriler();
+            fr.Show();
         }
 
         private void btnUrunIslemleri_Click(object sender, EventArgs e)
         {
             FrmUrun frmUrun = new FrmUrun();
-            frmUrun.ShowDialog();
+            frmUrun.Show();
+        }
+
+        private void btnIstatistikler_Click(object sender, EventArgs e)
+        {
+            FrmIstatistik fri = new FrmIstatistik();
+            fri.Show();
         }
     }
 }

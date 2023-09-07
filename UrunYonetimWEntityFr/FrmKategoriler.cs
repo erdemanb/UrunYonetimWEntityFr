@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace UrunYonetimWEntityFr
 {
-    public partial class Form1 : Form
+    public partial class FrmKategoriler : Form
     {
-        public Form1()
+        public FrmKategoriler()
         {
             InitializeComponent();
         }

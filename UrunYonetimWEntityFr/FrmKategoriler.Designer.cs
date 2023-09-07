@@ -1,6 +1,6 @@
 ﻿namespace UrunYonetimWEntityFr
 {
-    partial class Form1
+    partial class FrmKategoriler
     {
         /// <summary>
         /// Required designer variable.
