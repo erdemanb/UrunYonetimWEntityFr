@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBUrunYonetimModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBUrunYonetimModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="TBL_KATEGORI">
           <Key>
             <PropertyRef Name="KATEGORIID" />
@@ -20,6 +20,7 @@
           <Property Name="MUSTERIAD" Type="varchar" MaxLength="30" />
           <Property Name="MUSTERISOYAD" Type="varchar" MaxLength="30" />
           <Property Name="MUSTERISEHIR" Type="varchar" MaxLength="20" />
+          <Property Name="MUSTERİDURUM" Type="bit" />
         </EntityType>
         <EntityType Name="TBL_SATIS">
           <Key>
@@ -39,7 +40,7 @@
           <Property Name="URUNAD" Type="varchar" MaxLength="30" />
           <Property Name="URUNMARKA" Type="varchar" MaxLength="30" />
           <Property Name="URUNSTOK" Type="smallint" />
-          <Property Name="URUNFIYAT" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="URUNFIYAT" Type="decimal" Precision="18" Scale="2" />
           <Property Name="URUNSTOKDURUM" Type="bit" />
           <Property Name="URUNKATEGORI" Type="int" />
         </EntityType>
@@ -97,8 +98,7 @@
             <End Role="TBL_URUN" EntitySet="TBL_URUN" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBUrunYonetimModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -119,6 +119,7 @@
           <Property Name="MUSTERISOYAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="MUSTERISEHIR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TBL_SATIS" Relationship="Self.FK_TBL_SATIS_TBL_MUSTERI" FromRole="TBL_MUSTERI" ToRole="TBL_SATIS" />
+          <Property Name="MUSTERİDURUM" Type="Boolean" />
         </EntityType>
         <EntityType Name="TBL_SATIS">
           <Key>
@@ -140,7 +141,7 @@
           <Property Name="URUNAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="URUNMARKA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="URUNSTOK" Type="Int16" />
-          <Property Name="URUNFIYAT" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="URUNFIYAT" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="URUNSTOKDURUM" Type="Boolean" />
           <Property Name="URUNKATEGORI" Type="Int32" />
           <NavigationProperty Name="TBL_KATEGORI" Relationship="Self.FK_TBL_URUN_TBL_KATEGORI" FromRole="TBL_URUN" ToRole="TBL_KATEGORI" />
@@ -217,6 +218,7 @@
           <EntitySetMapping Name="TBL_MUSTERI">
             <EntityTypeMapping TypeName="DBUrunYonetimModel.TBL_MUSTERI">
               <MappingFragment StoreEntitySet="TBL_MUSTERI">
+                <ScalarProperty Name="MUSTERİDURUM" ColumnName="MUSTERİDURUM" />
                 <ScalarProperty Name="MUSTERIID" ColumnName="MUSTERIID" />
                 <ScalarProperty Name="MUSTERIAD" ColumnName="MUSTERIAD" />
                 <ScalarProperty Name="MUSTERISOYAD" ColumnName="MUSTERISOYAD" />

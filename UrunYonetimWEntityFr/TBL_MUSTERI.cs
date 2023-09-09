@@ -24,6 +24,7 @@ namespace UrunYonetimWEntityFr
         public string MUSTERIAD { get; set; }
         public string MUSTERISOYAD { get; set; }
         public string MUSTERISEHIR { get; set; }
+        public Nullable<bool> MUSTERİDURUM { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_SATIS> TBL_SATIS { get; set; }
