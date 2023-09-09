@@ -30,6 +30,9 @@ namespace UrunYonetimWEntityFr
             lblEnDusukFiyat.Text = (from x in db.TBL_URUN orderby x.URUNFIYAT ascending select x.URUNAD).FirstOrDefault().ToString();
             lblBeyazEsya.Text = db.TBL_URUN.Count(x=>x.URUNKATEGORI == 1).ToString();
             lblToplamBuzdolabı.Text = db.TBL_URUN.Count(x => x.URUNAD == "BUZDOLABI").ToString();
+            lblSehirSayisi.Text = (from x in db.TBL_MUSTERI select x.MUSTERISEHIR).Distinct().Count().ToString();
+            //Üst satırdaki Distinct metodu şehirlerin tekrarsız gelmesini sağlar.
+            lblEnFazlaMarka.Text = db.MARKAGETIR().FirstOrDefault().ToString();
 
 
             

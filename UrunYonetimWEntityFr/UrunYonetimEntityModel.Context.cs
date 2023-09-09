@@ -12,6 +12,8 @@ namespace UrunYonetimWEntityFr
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class DBUrunYonetimEntities : DbContext
     {
@@ -29,5 +31,10 @@ namespace UrunYonetimWEntityFr
         public virtual DbSet<TBL_MUSTERI> TBL_MUSTERI { get; set; }
         public virtual DbSet<TBL_SATIS> TBL_SATIS { get; set; }
         public virtual DbSet<TBL_URUN> TBL_URUN { get; set; }
+    
+        public virtual ObjectResult<string> MARKAGETIR()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("MARKAGETIR");
+        }
     }
 }
